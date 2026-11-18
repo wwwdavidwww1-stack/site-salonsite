@@ -1,0 +1,816 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3 { color: #ffffff; font-weight: 700; }
+
+/* --- ШАПКА --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: #121212;
+    border-bottom: 1px solid #333;
+    z-index: 100;
+    height: 80px;
+    position: relative;
+}
+
+.logo { font-size: 24px; font-weight: 700; color: #d4af37; letter-spacing: 2px; }
+
+/* Контейнер для ссылок */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Расстояние между кнопками */
+    position: static; /* Возвращаем на место в шапке для ПК */
+    width: auto;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Сами ссылки */
+nav a {
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 0; /* Убираем старый отступ */
+}
+
+nav a:hover, nav a.active { color: #d4af37; }
+
+/* Кнопка "Записаться" */
+.btn-nav {
+    border: 1px solid #d4af37;
+    padding: 8px 16px;
+    border-radius: 4px;
+    white-space: nowrap; /* Чтобы текст не переносился на новую строку */
+}
+
+.btn-nav:hover { 
+    background-color: #d4af37; 
+    color: #121212; 
+}
+
+/* Логотипы */
+.logo-container { display: flex; align-items: center; gap: 15px; }
+.logo-icon {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    /* ВОЗВРАЩАЕМ ЗОЛОТОЙ ФИЛЬТР ДЛЯ ПК */
+    filter: invert(80%) sepia(30%) saturate(1000%) hue-rotate(350deg) brightness(90%) contrast(90%);
+    /* Легкое свечение */
+    
+}
+
+/* --- КОНТЕЙНЕР ЭКРАНОВ --- */
+main {
+    flex: 1; 
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- ЭКРАНЫ --- */
+.screen {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0; 
+    visibility: hidden;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(20px); 
+}
+
+.screen.active-screen {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* --- ГЛАВНЫЙ ЭКРАН --- */
+#hero {
+    /* Теперь картинка берется из твоей папки */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('bg.jpg') center/cover;
+    animation: zoomEffect 20s infinite alternate ease-in-out;
+    justify-content: space-between; 
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes zoomEffect { 0% { background-size: 100%; } 100% { background-size: 110%; } }
+
+.hero-content h1 { font-size: 52px; margin-bottom: 20px; max-width: 900px; line-height: 1.2; }
+.hero-content p { font-size: 18px; margin-bottom: 40px; color: #ccc; }
+
+.hero-content, .hero-contacts {
+    position: relative;
+    z-index: 2; 
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.2s forwards ease-out;
+}
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+/* --- КНОПКИ --- */
+.btn-main {
+    background-color: #d4af37;
+    color: #121212;
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+.btn-main:hover { background-color: #b5952f; transform: scale(1.05); }
+
+.btn-outline {
+    background-color: transparent;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 15px 30px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+    font-family: inherit;
+}
+.btn-outline:hover { background-color: #d4af37; color: #121212; transform: scale(1.05); }
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- УСЛУГИ --- */
+.services-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.services-subtitle {
+    color: #888;
+    font-size: 16px;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.premium-services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Расстояние между строками */
+}
+
+.premium-service-item {
+    display: flex;
+    align-items: flex-end; /* Выравниваем по нижнему краю, чтобы цена была на одной линии с текстом */
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.premium-service-item:hover {
+    transform: translateX(10px); /* Легкий сдвиг вправо при наведении */
+}
+
+.service-info {
+    flex: 1; /* Занимает всё доступное место */
+}
+
+.service-info h3 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.premium-service-item:hover .service-info h3 {
+    color: #d4af37; /* Название становится золотым при наведении */
+}
+
+.service-info p {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+/* Пунктирная линия между названием и ценой */
+.service-line {
+    flex-grow: 1;
+    border-bottom: 1px dashed #444;
+    margin: 0 15px;
+    position: relative;
+    bottom: 6px; /* Поднимаем линию чуть выше, чтобы она была по центру текста */
+}
+
+.service-price {
+    font-size: 22px;
+    font-weight: 700;
+    color: #d4af37;
+    white-space: nowrap; /* Чтобы цена не переносилась на новую строку */
+}
+
+/* На телефонах скрываем пунктирную линию, чтобы текст не сжимался */
+@media (max-width: 900px) {
+    .service-line {
+        display: none;
+    }
+    .premium-service-item {
+        flex-direction: column;
+        align-items: flex-start;
+        background: #1a1a1a;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #333;
+        gap: 10px;
+    }
+    .service-price {
+        font-size: 20px;
+    }
+}
+
+.service-card h3 { font-size: 22px; margin-bottom: 10px; }
+.price { display: block; margin-top: 20px; font-size: 24px; color: #d4af37; }
+
+/* --- МАСТЕРА --- */
+.masters-container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.masters-subtitle {
+    color: #888;
+    font-size: 16px;
+    margin-bottom: 50px;
+}
+
+.premium-masters-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.premium-master-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    width: 320px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Красивое свечение и подъем при наведении */
+.premium-master-card:hover {
+    transform: translateY(-10px);
+    border-color: #d4af37;
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15); /* Золотая тень */
+}
+
+.master-image-wrapper {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    padding: 4px; /* Отступ для золотой рамки */
+    border: 2px solid #d4af37; /* Золотая рамка */
+    margin-bottom: 20px;
+    position: relative;
+    transition: transform 0.4s ease;
+}
+
+/* Фото становится чуть больше при наведении */
+.premium-master-card:hover .master-image-wrapper {
+    transform: scale(1.05);
+}
+
+.master-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.master-info h3 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.master-title {
+    display: block;
+    color: #d4af37;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.master-info p {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Кнопка "Записаться" внутри карточки мастера */
+.premium-master-card .btn-outline {
+    width: 80%; /* Чтобы кнопка была аккуратной */
+    transition: all 0.3s;
+}
+
+.premium-master-card:hover .btn-outline {
+    background-color: #d4af37;
+    color: #121212;
+}
+
+/* Адаптив для телефонов */
+@media (max-width: 900px) {
+    .premium-masters-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    .premium-master-card {
+        width: 100%;
+        max-width: 350px;
+        padding: 20px;
+    }
+}
+
+.master-card img {
+    width: 180px; 
+    height: 180px; 
+    object-fit: cover;
+    border-radius: 50%; 
+    border: 3px solid #d4af37; 
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5); 
+}
+.master-card h3 { font-size: 22px; margin-bottom: 5px; }
+.master-card p { color: #888; font-size: 14px; }
+
+/* --- ПОДВАЛ --- */
+footer {
+    text-align: center; padding: 15px; background-color: #0a0a0a;
+    color: #555; font-size: 13px; border-top: 1px solid #333; z-index: 100;
+}
+
+/* --- КОНТЕЙНЕР ДЛЯ ЧАСТИЦ --- */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+}
+
+/* --- БЕГУЩАЯ СТРОКА --- */
+.marquee-container {
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.85);
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 15px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    bottom: 250px; 
+    left: 0;
+    z-index: 10;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 25s linear infinite; 
+}
+.marquee-content:hover { animation-play-state: paused; }
+.marquee-content span {
+    color: #d4af37;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.marquee-content .dot { color: #555; margin: 0 30px; font-size: 16px; }
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- БЛОК "О НАС" --- */
+.about-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.about-manifesto {
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    font-style: italic; /* Делаем текст более литературным */
+    text-align: center;
+}
+
+/* Сетка преимуществ (Для ПК - в один ряд) */
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feature-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 25px 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+    flex: 1; /* Карточки растягиваются равномерно в ряд */
+    max-width: 300px; /* Ограничиваем максимальную ширину */
+}
+
+.feature-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    padding: 25px 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37;
+}
+
+.feature-icon {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37;
+}
+
+.feature-icon {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    color: #d4af37;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Контакты и Карта */
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contact-info-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    background: #121212;
+    padding: 20px 30px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    min-width: 280px;
+}
+
+.info-icon {
+    font-size: 28px;
+    margin-right: 20px;
+}
+
+.info-item h3 {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-item p {
+    font-size: 18px;
+    color: #fff;
+    margin: 0;
+    font-weight: 700;
+}
+
+.info-item a {
+    color: #d4af37;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.info-item a:hover { color: #fff; }
+
+/* Рамка для карты */
+.map-wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.5s;
+}
+
+.map-wrapper:hover {
+    border-color: #d4af37;
+}
+
+/* Адаптив для блока О нас */
+@media (max-width: 900px) {
+    .features-grid {
+        grid-template-columns: 1fr; /* В одну колонку на телефонах */
+    }
+    .info-item {
+        width: 100%;
+        min-width: auto;
+    }
+    .map-wrapper iframe {
+        height: 250px;
+    }
+}
+
+.info-item:hover { border-color: #d4af37; }
+.info-icon { font-size: 28px; margin-right: 20px; }
+.info-item h3 { font-size: 16px; color: #d4af37; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+.info-item p { font-size: 18px; color: #fff; margin: 0; }
+.info-item a { color: #fff; text-decoration: none; transition: color 0.3s; }
+.info-item a:hover { color: #d4af37; }
+
+.map-wrapper:hover { border-color: #d4af37; }
+
+/* --- ВИДЖЕТ ЗАПИСИ (Пошаговый) --- */
+.booking-widget {
+    background-color: #1a1a1a; padding: 30px; border-radius: 12px;
+    width: 100%; max-width: 600px; margin: 0 auto; text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333;
+}
+.progress-bar { display: flex; gap: 10px; margin-bottom: 30px; }
+.progress-step { flex: 1; height: 4px; background-color: #333; border-radius: 2px; transition: background-color 0.3s; }
+.progress-step.active { background-color: #d4af37; }
+
+.booking-step { display: none; }
+.booking-step.active { display: block; animation: fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.back-link { color: #888; cursor: pointer; margin-bottom: 15px; font-size: 14px; display: inline-block; }
+.back-link:hover { color: #d4af37; }
+
+.booking-options { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+.option-card {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px; background-color: #121212; border: 1px solid #333;
+    border-radius: 8px; cursor: pointer; transition: all 0.3s;
+}
+.option-card:hover { border-color: #d4af37; }
+.option-card.selected { border-color: #d4af37; background-color: rgba(212, 175, 55, 0.1); }
+.option-card h4 { font-size: 18px; margin-bottom: 5px; color: #fff; }
+.option-card p { font-size: 13px; color: #888; }
+.option-price { font-size: 18px; font-weight: 700; color: #fff; }
+
+.option-card:has(.master-avatar) { justify-content: flex-start; gap: 15px; }
+.master-avatar {
+    width: 45px; height: 45px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: bold; font-size: 18px;
+}
+
+.summary-box { background-color: rgba(212, 175, 55, 0.1); padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+.summary-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 15px; }
+.summary-row:last-child { margin-bottom: 0; }
+.summary-row span { color: #aaa; }
+.summary-row strong { color: #d4af37; }
+
+#bookingForm .form-group { margin-bottom: 15px; }
+#bookingForm label { color: #888; font-size: 14px; margin-bottom: 5px; display: block;}
+#bookingForm input {
+    width: 100%; padding: 15px; background-color: #121212;
+    border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 16px;
+}
+#bookingForm input:focus { border-color: #d4af37; outline: none; }
+#bookingForm button { width: 100%; }
+
+/* --- БУРГЕР (Базовые стили) --- */
+.burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1001; }
+.burger span { display: block; width: 30px; height: 3px; background-color: #d4af37; transition: 0.3s; }
+.burger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger.active span:nth-child(2) { opacity: 0; }
+.burger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+
+/* --- СПЕЦИАЛЬНО ДЛЯ ТЕЛЕФОНОВ (Мобильная версия) --- */
+@media (max-width: 900px) {
+    header { z-index: 1004; position: relative; }
+    
+    .logo-icon {
+        filter: invert(80%) sepia(30%) saturate(1000%) hue-rotate(350deg) brightness(90%) contrast(90%);
+        width: 30px; height: 30px;
+    }
+    .logo-container { gap: 10px; }
+    .logo { font-size: 18px; }
+
+    .hero-content h1 { 
+        font-size: clamp(28px, 7vw, 42px); 
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+    
+    .hero-content p { 
+        font-size: clamp(14px, 3.5vw, 18px); 
+        margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px; 
+        width: 95%; 
+        max-width: 400px;
+        margin: 20px auto 80px auto; 
+    }
+    .hero-buttons .btn-main { grid-column: 1 / -1; }
+    .hero-buttons .btn-outline[data-target="contacts"] { grid-column: 1 / -1; width: 50%; margin: 0 auto; }
+    .hero-buttons button { 
+        width: 100%; 
+        padding: 12px 5px; 
+        font-size: clamp(12px, 3.5vw, 15px); 
+    }
+
+        /* БЕГУЩАЯ СТРОКА */
+    .marquee-container { 
+        bottom: 60px; 
+        padding: 10px 0; 
+    }
+    
+    .marquee-content span {
+        font-size: 12px; 
+    }
+
+    /* ДОБАВЛЯЕМ ОТСТУП СНИЗУ ДЛЯ КОНТЕНТА, ЧТОБЫ НЕ НАЕЗЖАЛО */
+    .hero-content {
+        padding-bottom: 100px; 
+        width: 100%;
+    }
+
+    .burger { transition: opacity 0.4s ease, transform 0.4s ease; display: flex; z-index: 1003; }
+    .burger.hide-burger { opacity: 0; transform: scale(0.5); pointer-events: none; }
+
+    nav {
+        position: fixed; top: 0; right: -75%; width: 70%; height: 100vh; 
+        background-color: #0a0a0a; display: flex; flex-direction: column;
+        justify-content: flex-start; padding-top: 100px; padding-left: 30px; gap: 25px; 
+        align-items: stretch; text-align: left; transition: right 0.4s ease; 
+        z-index: 1002; border-left: 1px solid #333; box-shadow: -10px 0 30px rgba(0,0,0,0.8); 
+    }
+    nav a { margin-left: 0; font-size: 20px; align-self: flex-start; }
+    
+    .burger-btn-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 30px; align-self: stretch; }
+    .burger-btn-wrapper a { width: 80%; text-align: center; padding: 12px 0; border: 1px solid #d4af37; border-radius: 4px; box-sizing: border-box; }
+    
+    nav.active { right: 0; }
+
+    .nav-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+        background-color: rgba(0, 0, 0, 0.6); z-index: 1001; 
+        opacity: 0; visibility: hidden; transition: opacity 0.4s ease;
+    }
+    .nav-overlay.active { opacity: 1; visibility: visible; }
+
+    .screen { padding: 10px; justify-content: flex-start; padding-top: 40px; overflow-y: auto; }
+    .services-grid { flex-direction: column; gap: 15px; width: 100%; max-width: 350px; }
+    .service-card { padding: 20px; width: 100%; }
+    
+    .masters-grid { flex-direction: column; gap: 20px; }
+    .master-card img { width: 120px; height: 120px; }
+    
+    .contact-info-grid { flex-direction: column; gap: 15px; align-items: center; }
+    .info-item { width: 100%; max-width: 350px; padding: 15px 20px; }
+    .map-wrapper iframe { height: 250px; }
+
+            /* Сетка преимуществ в блоке "О нас" на телефонах (2 сверху, 1 по центру) */
+    .features-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Две колонки */
+        gap: 15px;
+        max-width: 400px;
+        margin: 0 auto 40px auto;
+    }
+    
+    .feature-card {
+        max-width: 100%; /* Снимаем ограничение ширины */
+    }
+
+    .feature-card:nth-child(3) {
+        grid-column: 1 / -1; /* Третья карточка занимает 2 колонки */
+        width: 70%; /* Но сама она будет чуть уже */
+        margin: 0 auto; /* Центрируем её */
+    }
+}
+
+/* --- АДАПТАЦИЯ ПОД НЕВЫСОКИЕ ЭКРАНЫ (Ноутбуки) --- */
+@media (max-height: 850px) {
+    /* 1. Поднимаем кнопки чуть выше */
+    .hero-buttons {
+        margin-bottom: 80px; 
+    }
+
+    /* 2. Опускаем бегущую строку в самый низ */
+    .marquee-container {
+        bottom: 110px !important; /* Принудительно прижимаем к низу */
+    }
+
+    /* 3. Уменьшаем шрифт заголовка, чтобы сэкономить место */
+    .hero-content h1 {
+        font-size: 40px; /* Чуть меньше, чем обычно */
+        margin-bottom: 15px;
+    }
+    
+    .hero-content p {
+        margin-bottom: 25px;
+    }
+}

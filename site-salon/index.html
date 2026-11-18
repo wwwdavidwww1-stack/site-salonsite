@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новый Стиль | Парикмахерская в Вязьме</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ШАПКА САЙТА -->
+        <!-- ШАПКА САЙТА -->
+    <header>
+                <div class="logo-container">
+            <img src="hairstylist-silhouette-000000-md.png" alt="Логотип" class="logo-icon">
+            <div class="logo">НОВЫЙ СТИЛЬ</div>
+            <img src="hairstylist-silhouette-000000-md.png" alt="Логотип" class="logo-icon">
+        </div>
+        
+        <!-- Кнопка-бургер (видна только на телефонах) -->
+        <div class="burger" id="burgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Навигация (для бургера) -->
+        <nav id="navMenu">
+            <a href="#" class="nav-link active" data-target="hero">Главная</a>
+            <a href="#" class="nav-link" data-target="services">Услуги</a>
+            <a href="#" class="nav-link" data-target="masters">Мастера</a>
+            <a href="#" class="nav-link" data-target="contacts">О нас</a>
+            <div class="burger-btn-wrapper">
+                 <a href="#" class="nav-link btn-nav" data-target="booking">Записаться</a>
+            </div>      
+    </header>
+
+        <div 
+            class="nav-overlay" id="navOverlay">
+        </div>
+
+        <!-- Убираем бегущую строку отсюда, она теперь будет внутри главного экрана -->
+
+        <!-- КОНТЕЙНЕР ДЛЯ ЭКРАНОВ -->
+    <main>
+        <!-- ЭКРАН 1: ГЛАВНАЯ -->
+        <section id="hero" class="screen active-screen">
+            <!-- Контейнер для летающих частиц -->
+            <div id="particles-js"></div>
+
+            <!-- Блок с текстом и кнопками -->
+            <div class="hero-content">
+                <h1>Стильная стрижка в самом центре города</h1>
+                <p>Опытные мастера, премиальные материалы и атмосфера, в которую хочется возвращаться.</p>
+                
+                <div class="hero-buttons">
+                    <button class="btn-main nav-link" data-target="booking">Записаться онлайн</button>
+                    <button class="btn-outline nav-link" data-target="services">Услуги</button>
+                    <button class="btn-outline nav-link" data-target="masters">Мастера</button>
+                    <button class="btn-outline nav-link" data-target="contacts">О нас</button>
+                </div>
+            </div>
+            
+            <!-- Бегущая строка внизу главного экрана -->
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span>г. Вязьма, ул. Ленина, 36</span> <span class="dot">•</span>
+                    <span>Скидка 20% на первый визит</span> <span class="dot">•</span>
+                    <span>Ежедневно с 10:00 до 22:00</span> <span class="dot">•</span>
+                    <span>Стрижки • Уход • Борода</span> <span class="dot">•</span>
+                    
+                    <!-- Повтор для бесконечности -->
+                    <span>г. Вязьма, ул. Ленина, 36</span> <span class="dot">•</span>
+                    <span>Скидка 20% на первый визит</span> <span class="dot">•</span>
+                    <span>Ежедневно с 10:00 до 22:00</span> <span class="dot">•</span>
+                    <span>Стрижки • Уход • Борода</span> <span class="dot">•</span>
+                </div>
+            </div>
+        </section>
+        
+                <!-- ЭКРАН 2: УСЛУГИ -->
+        <section id="services" class="screen">
+            <div class="services-container">
+                <h2>Услуги и цены</h2>
+                <p class="services-subtitle">Каждая стрижка — это ритуал. Выберите то, что подходит именно вам.</p>
+                
+                <div class="premium-services-list">
+                    <!-- Услуга 1 -->
+                    <div class="premium-service-item">
+                        <div class="service-info">
+                            <h3>Мужская стрижка</h3>
+                            <p>Мытье, стрижка, укладка. Работа с формой и текстурами.</p>
+                        </div>
+                        <div class="service-line"></div>
+                        <div class="service-price">1500 ₽</div>
+                    </div>
+
+                    <!-- Услуга 2 -->
+                    <div class="premium-service-item">
+                        <div class="service-info">
+                            <h3>Стрижка бороды</h3>
+                            <p>Моделирование, горячее полотенце, уход маслом.</p>
+                        </div>
+                        <div class="service-line"></div>
+                        <div class="service-price">1000 ₽</div>
+                    </div>
+
+                    <!-- Услуга 3 -->
+                    <div class="premium-service-item">
+                        <div class="service-info">
+                            <h3>Комплекс (Стрижка + Борода)</h3>
+                            <p>Полный образ за один визит. Скидка 15% от базовой цены.</p>
+                        </div>
+                        <div class="service-line"></div>
+                        <div class="service-price">2200 ₽</div>
+                    </div>
+                </div>
+
+                <button class="btn-main nav-link" data-target="booking" style="margin-top: 40px;">Записаться на услугу</button>
+            </div>
+        </section>
+
+                        <!-- ЭКРАН 3: МАСТЕРА -->
+        <section id="masters" class="screen">
+            <div class="masters-container">
+                <h2>Наши мастера</h2>
+                <p class="masters-subtitle">Профессионалы, которые знают о стиле всё.</p>
+                
+                <div class="premium-masters-grid">
+                    <!-- Мастер 1 -->
+                    <div class="premium-master-card">
+                        <div class="master-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Мастер Алексей">
+                        </div>
+                        <div class="master-info">
+                            <h3>Алексей</h3>
+                            <span class="master-title">Топ-барбер</span>
+                            <p>Стаж 5 лет. Специализируется на классических стрижках и сложных текстурах.</p>
+                            <button class="btn-outline nav-link" data-target="booking" onclick="selectMaster('Алексей', this.closest('.premium-master-card'))" style="margin-top: 15px; padding: 8px 20px; font-size: 14px;">Записаться</button>
+                        </div>
+                    </div>
+
+                    <!-- Мастер 2 -->
+                    <div class="premium-master-card">
+                        <div class="master-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Мастер Дмитрий">
+                        </div>
+                        <div class="master-info">
+                            <h3>Дмитрий</h3>
+                            <span class="master-title">Барбер-эксперт</span>
+                            <p>Стаж 3 года. Мастер по бородам, королевскому бритью и уходу за лицом.</p>
+                            <button class="btn-outline nav-link" data-target="booking" onclick="selectMaster('Дмитрий', this.closest('.premium-master-card'))" style="margin-top: 15px; padding: 8px 20px; font-size: 14px;">Записаться</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <!-- ЭКРАН 4: ЗАПИСЬ (Пошаговая форма) -->
+        <section id="booking" class="screen">
+            <div class="booking-widget">
+                
+                <!-- Прогресс-бар (полоски сверху) -->
+                <div class="progress-bar">
+                    <div class="progress-step active" id="step1-indicator"></div>
+                    <div class="progress-step" id="step2-indicator"></div>
+                    <div class="progress-step" id="step3-indicator"></div>
+                </div>
+
+                <!-- ШАГ 1: ВЫБОР УСЛУГИ -->
+                <div class="booking-step active" id="step-1">
+                    <h3>Выберите услугу</h3>
+                    <div class="booking-options">
+                        <div class="option-card" onclick="selectService('Мужская стрижка', 1500, this)">
+                            <div>
+                                <h4>Мужская стрижка</h4>
+                                <p>Мытье, стрижка, укладка</p>
+                            </div>
+                            <span class="option-price">1500 ₽</span>
+                        </div>
+                        <div class="option-card" onclick="selectService('Стрижка бороды', 1000, this)">
+                            <div>
+                                <h4>Стрижка бороды</h4>
+                                <p>Моделирование, горячее полотенце</p>
+                            </div>
+                            <span class="option-price">1000 ₽</span>
+                        </div>
+                        <div class="option-card" onclick="selectService('Комплекс', 2200, this)">
+                            <div>
+                                <h4>Комплекс (Стрижка + Борода)</h4>
+                                <p>Полный образ за один визит</p>
+                            </div>
+                            <span class="option-price">2200 ₽</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ШАГ 2: ВЫБОР МАСТЕРА -->
+                <div class="booking-step" id="step-2">
+                    <div class="back-link" onclick="goToStep(1)">← Назад</div>
+                    <h3>Выберите мастера</h3>
+                    <div class="booking-options">
+                        <div class="option-card" onclick="selectMaster('Любой', this)">
+                            <div class="master-avatar" style="background: #333;">★</div>
+                            <div>
+                                <h4>Любой мастер</h4>
+                                <p>Выберем лучшего для вас</p>
+                            </div>
+                        </div>
+                        <div class="option-card" onclick="selectMaster('Алексей', this)">
+                            <div class="master-avatar" style="background: #4a3b22;">А</div>
+                            <div>
+                                <h4>Алексей</h4>
+                                <p>Топ-барбер, стаж 5 лет</p>
+                            </div>
+                        </div>
+                        <div class="option-card" onclick="selectMaster('Дмитрий', this)">
+                            <div class="master-avatar" style="background: #22354a;">Д</div>
+                            <div>
+                                <h4>Дмитрий</h4>
+                                <p>Специалист по бородам</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ШАГ 3: КОНТАКТЫ И ПОДТВЕРЖДЕНИЕ -->
+                <div class="booking-step" id="step-3">
+                    <div class="back-link" onclick="goToStep(2)">← Назад</div>
+                    <h3>Ваши контакты</h3>
+                    
+                    <form id="bookingForm">
+                        <!-- Скрытые поля для передачи данных -->
+                        <input type="hidden" id="hiddenService" name="service">
+                        <input type="hidden" id="hiddenMaster" name="master">
+
+                        <!-- Красивая сводка заказа -->
+                        <div class="summary-box">
+                            <div class="summary-row"><span>Услуга</span> <strong id="summaryService">-</strong></div>
+                            <div class="summary-row"><span>Специалист</span> <strong id="summaryMaster">-</strong></div>
+                            <div class="summary-row"><span>Цена</span> <strong id="summaryPrice">-</strong></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ваше имя</label>
+                            <input type="text" id="name" required placeholder="Иван">
+                        </div>
+                        <div class="form-group">
+                            <label>Телефон</label>
+                            <input type="tel" id="phone" required placeholder="+7 (999) 123-45-67">
+                        </div>
+                        
+                        <button type="submit" class="btn-main">Отправить заявку</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+                                <!-- ЭКРАН 5: О НАС / КОНТАКТЫ -->
+        <section id="contacts" class="screen">
+            <div class="about-container">
+                <h2>О нас</h2>
+                <p class="about-manifesto">
+                    Парикмахерская «Новый Стиль» — это место, где ценят индивидуальность. Мы находимся в самом центре Вязьмы и ждем вас каждый день.
+                </p>
+                
+                <!-- Три преимущества (Сетка) -->
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🏆</span>
+                        <h3>Опытные мастера</h3>
+                        <p>Наши барберы регулярно проходят обучение и знают тренды мировой моды.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🥃</span>
+                        <h3>Атмосфера</h3>
+                        <p>Уютный интерьер, хорошая музыка и бесплатный кофе для каждого гостя.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">✨</span>
+                        <h3>Премиум-уход</h3>
+                        <p>Используем только профессиональную косметику ведущих мировых брендов.</p>
+                    </div>
+                </div>
+
+                <div class="contact-details">
+                    <!-- Блок с адресом и телефоном -->
+                    <div class="contact-info-grid">
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div>
+                                <h3>Наш адрес</h3>
+                                <p>г. Вязьма, ул. Ленина, 36</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <div>
+                                <h3>Телефон</h3>
+                                <p><a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Яндекс Карта -->
+                    <div class="map-wrapper">
+                        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8e3a2e4c2d1e4f6b7c8d9e0a1b2c3d4e5f6&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Парикмахерская «Новый Стиль». г. Вязьма.</p>
+    </footer>
+
+    <!-- Подключаем библиотеку для частиц -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
